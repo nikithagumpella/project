@@ -1,0 +1,89 @@
+<div class="abc">
+<h2>Patients Data</h2>
+<div>
+  <div>
+    <input
+      type="text"
+      name="search"
+      [(ngModel)]="searchValue"
+      autocomplete="off"
+      placeholder="&#128269; Patient Name"
+    />
+  </div>
+</div>
+<table class="table table-bordered mt-2">
+  <thead class="thead-light">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>status</th>
+      <th>isActive</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of users | filter: searchValue">
+      <td>{{ a.patientId }}</td>
+      <td>{{ a.firstName + " " + a.lastName }}</td>
+
+      <td>{{ a.status }}</td>
+
+      <td>{{ a.isActive }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info"
+          (click)="getPatientId(a.patientId)"
+        >
+          Show Data
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div
+  class="modal"
+  role="dialog"
+  [ngStyle]="{ display: 'block' }"
+  *ngIf="viewPatientDetails"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pb-0 mb-0">Patient Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-3">Id</div>
+          <div class="col-sm-4">{{ details.patientId }}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Name</div>
+          <div class="col-sm-4">
+            {{ details.firstName + " " + details.lastName }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Date Of Birth</div>
+          <div class="col-sm-4">
+            {{ details.dateOfBirth | date: "dd/MM/yyyy" }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">isActive</div>
+          <div class="col-sm-4">{{ details.isActive }}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Status</div>
+          <div class="col-sm-4">{{ details.status }}</div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closePopup()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

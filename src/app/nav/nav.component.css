@@ -1,0 +1,44 @@
+
+.card img{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+    transition: 0.3s ease-in-out;
+}
+.card img:hover{
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+.div {
+    cursor: pointer;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .searchbox{
+    border: none;
+    border-radius: 2px;
+    background-color: #fafafa;
+    padding: 5px 10px;
+    height: 50%;
+    width: 400px;
+    margin-left: 150px;
+}
+
+.form-control{
+    border-radius: 3px;
+    width: 500px;
+    margin-left: 150px;
+    height: auto;
+}
+
+.nav-login-mobile {
+    position: fixed; 
+    right: 0px; 
+    top: 60px;
+}
+
+.nav-login-desktop {
+    position: fixed; 
+    right: 10px; 
+}

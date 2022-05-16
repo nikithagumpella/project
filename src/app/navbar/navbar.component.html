@@ -1,0 +1,220 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+  <a class="navbar-brand" routerLink="/" style="margin-left: 30px">
+    <fa-icon [icon]="book"></fa-icon>    Book Cart 
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="onToggleNavbar()" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" [ngClass]="{show: showNavbar}" id="navbarNav">
+      <div class="form-group">
+          <input type="text"       [(ngModel)]="searchValue"
+          class="form-control" placeholder="search books or authors">
+      </div>
+      <a style="color: #fff;margin-left: 40px;">
+              <fa-icon [icon]="wishlist"></fa-icon>
+              <div style="font-size: 10px" class="badge bg-danger">{{count}}</div>
+            </a>
+              <a style="color: #fff; margin-left: 20px; margin-right: 40px;">
+                <fa-icon [icon]="cart"></fa-icon>
+                <div style="font-size: 10px" class="badge bg-danger">{{totalitem}}</div>
+             </a>
+          <div [ngClass]="loginbar">
+            <div *ngIf="loggedin()" class="dropdown mr-5" dropdown>
+              
+              <a href="#" class="dropdown-toggle text-light" style="color: #fff" dropdownToggle (click)="true">
+                <fa-icon [icon]="user"> </fa-icon>{{loggedinUserName }}
+              </a>
+              <a  class="dropdown-item"><i class="fas fa-sign-out-alt"></i> My Orders</a>        
+      <a (click)='onLogout()' class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      
+              </div>
+            </div>
+          
+          <div *ngIf="!loggedin()" class="navbar-right" (ngSubmit)="onLogin(loginForm)">
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="!loggedin()" class="nav-item">
+                  <a 
+                    class="nav-link navbar-right" style="color: #fff"
+                    routerLinkActive="active" 
+                    routerLink="/user-register">
+                    Register
+                  </a>
+                </li>
+                <li *ngIf="!loggedin()" class="nav-item navbar-right">
+                  <a 
+                    class="nav-link" style="color: #fff"
+                    routerLinkActive="active" 
+                    routerLink="/user/login">
+                    Login
+                  </a>
+                </li>
+            </ul>
+          </div>
+        </div>
+        
+  </nav>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <button _ngcontent-sto-c64 aria-haspopup="true" mat-button class="mat-focus-indicator mat-menu-trigger mat-button mat-button-base ng-star-inserted">
+    <span class="mat-button-wrapper"></span>
+      <mat-icon _ngcontent-sto-c64 role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+      <mat-icon _ngcontent-sto-c64 role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">arrow_drop_down</mat-icon>
+      <span matripple class="mat-ripple mat-button-ripple"></span>
+      <span class="mat-button-focus-overlay"></span>
+    </button>
+    <div class="mat-menu-content ng-tns-c61-1">
+      <button _ngcontent-sto-c64 mat-menu-item class="mat-focus-indicator mat-menu-item ng-tns-c61-1" tabindex="0" role="menuitem" aria-disabled="false">
+        "My Orders"</button>
+        <div matripple class="mat-ripple mat-menu-ripple">
+        
+        <button _ngcontent-sto-c64 mat-menu-item class="mat-focus-indicator mat-menu-item ng-tns-c61-1" role="menuitem" tabindex="0" aria-disabled="false">
+          "Logout"  </button>
+        </div>
+          <div matripple class="mat-ripple mat-menu-ripple">
+        </div>
+        </div>
+ -->
+
+
+
+
+
+  <!-- <div class="row">
+    <div class="col-md-4">
+      <div class="language">
+        <ul>
+          <li>
+            English
+            <div class="language">
+              <ul>
+                <li>
+                  abc
+                </li>
+                <li>
+                  prq
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+ <!-- <div class="abc">
+   <ul>
+     <li (click)="drop('abc')">
+      user<fa-icon [icon]="down"></fa-icon>
+      <div class="dropdown" *ngif="id==='abc'">
+        <ul>
+          <li>
+            My Orders
+          </li>
+          <li>
+            Logout
+          </li>
+        </ul>
+      </div>
+     </li>
+   </ul>
+ </div> -->
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+<!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" routerLink="/">
+    <fa-icon [icon]="home"></fa-icon>    Home
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="onToggleNavbar()" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" [ngClass]="{show: showNavbar}" id="navbarNav">
+      <ul class="navbar-nav">
+        <li>
+          <a  
+            [routerLinkActiveOptions]="{exact:true}" 
+            routerLinkActive="active" 
+            class="nav-link" 
+            routerLink="/">
+            aboutus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  
+            routerLinkActive="active" 
+            routerLink="/property-list/2"              
+            >contactus &nbsp;&nbsp;&nbsp;
+          </a>
+        </li>
+        
+      </ul>
+        <div [ngClass]="loginbar">
+          <div *ngIf="loggedin()" class="dropdown mr-5" dropdown>
+            
+            <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
+              Welcome {{loggedinUserName }}
+            </a>
+            
+    <a (click)='onLogout()' class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+          </div>
+        
+        <div *ngIf="!loggedin()" class="navbar-right" (ngSubmit)="onLogin(loginForm)">
+          <ul class="nav navbar-nav navbar-right">
+              <li *ngIf="!loggedin()" class="nav-item">
+                <a 
+                  class="nav-link navbar-right" 
+                  routerLinkActive="active" 
+                  routerLink="/user-register">
+                  Register
+                </a>
+              </li>
+              <li *ngIf="!loggedin()" class="nav-item navbar-right">
+                <a 
+                  class="nav-link" 
+                  routerLinkActive="active" 
+                  routerLink="/user/login">
+                  Login
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+      
+</nav> -->
+<!-- #3f51b5 -->
+
+<!-- <div class="search-hero">
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">
+</div> -->

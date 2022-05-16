@@ -1,0 +1,51 @@
+    <mat-toolbar color="primary">
+        <span class="material-icons" style="background-color: #3f51b5;">book</span>
+        <span>Book Cart</span>
+              <!-- <input type="search"       [(ngModel)]="searchingWithName" (ngModelChange)="searchWithName($event)"
+              class="form-control" placeholder="search books or authors"> -->
+              <div>
+                <input type="search"[(ngModel)]="searchValue"class="form-control"placeholder="search books or authors" class="mat-autocomplete-trigger searchbox ng-untouched ng-pristine ng-valid" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-haspopup="true">
+                
+              </div>
+        <a style="margin-left: 40px;">
+          <mat-icon style="background-color: #3f51b5;"*ngIf="loggedin()">favorite</mat-icon>
+          <div style="font-size: 10px" class="badge bg-danger"*ngIf="loggedin()">{{count}}</div>
+        </a>      
+        <a style=" margin-left: 20px; margin-right: 40px;">
+          <span class="material-icons" style="margin-left: 25px;">shopping_cart</span>
+          <div style="font-size: 10px" class="badge bg-danger"*ngIf="loggedin()">{{totalitem}}</div>
+        </a>
+
+        <div *ngIf="loggedin()">
+  <div mat-button [matMenuTriggerFor]="menu" style="background-color: #3f51b5;"><fa-icon [icon]="user"> </fa-icon>{{loggedinUserName }}</div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>my orders</button>
+    <button mat-menu-item (click)='onLogout()' >log out</button>
+  </mat-menu>
+   </div>
+              <a *ngIf="!loggedin()" (ngSubmit)="onLogin(loginForm)"
+                class="nav-link navbar-right" style="color: #fff"
+                routerLinkActive="active" 
+                routerLink="/user-register">
+                Register
+              </a>
+              <a *ngIf="!loggedin()"(ngSubmit)="onLogin(loginForm)"
+                class="nav-link" style="color: #fff"
+                routerLinkActive="active" 
+                routerLink="/user/login">
+                Login
+              </a>
+    </mat-toolbar>
+    <div class="container"*ngIf="loggedin()">
+      <div class="row">
+      
+        <ng-container *ngFor="let a of list | filter: searchValue">
+          <div class="card col-md-3">
+          <img src="https://bookcart.azurewebsites.net/Upload/{{ a.coverFileName }}">
+          <h5 style="text-align: center;">{{ a.title }}</h5>
+          <p style="text-align: center;"><strong>Price : </strong>{{ a.price }}</p>
+          <button class="btn-primary" style="margin-bottom: 5%;"><span class="material-icons">shopping_cart</span>Add to Cart</button>
+          </div>
+          </ng-container>
+        </div>
+    </div>

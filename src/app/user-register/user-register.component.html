@@ -1,0 +1,100 @@
+
+<div class="row ">
+    <div class="col-lg-6 mt-3 shadow-lg p-0 bg-white rounded" style="margin: auto;">
+        <div class="card-header bg-primary">
+         <h3>Register</h3>
+        </div>
+        <div class="card p-2">
+            <form [formGroup]="registerationForm" (ngSubmit)="onSubmit()">            
+                <div class="form-group col-12"
+                [ngClass]="{'focused': username.value || NameFocused}">
+                    <label for="name" class="form-label">Name</label>
+                    <input
+                    id="name"                
+                    formControlName="username"
+                    (focus)="NameFocused=1"
+                    (blur)="NameFocused=0"                                               
+                    type="text"
+                    class="form-control form-input"
+                    [ngClass]="{'form-submitted': userSubmitted}"
+                    ngClass
+                    name="name"                
+                   >   
+                   <!-- <div *ngIf="(!registerationForm.get('username').valid && 
+                   registerationForm.get('username').touched)" class="error-block">
+                       Please provide name
+                   </div>    -->
+    
+                   <div *ngIf="(!username.valid && (username.touched || userSubmitted))" class="error-block">
+                       Please provide name
+                   </div>   
+                </div> 
+    
+        
+                <div class="form-group col-12"
+                [ngClass]="{'focused':  email.value || EmailFocused}">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                    id="email"
+                    formControlName="email"
+                    (focus)="EmailFocused=1"
+                    (blur)="EmailFocused=0"
+                    type="text"
+                    class="form-control form-input"
+                    [ngClass]="{'form-submitted': userSubmitted}"
+                    name="email"                
+                    >
+                </div>
+    
+                <div class="row ml-0 mr-0">
+                <div class="form-group col-6 mt-3"
+                [ngClass]="{'focused': password.value || PassFocused}">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                    id="password"
+                    formControlName="password"
+                    (focus)="PassFocused=1"
+                    (blur)="PassFocused=0"                                               
+                    type="password"
+                    class="form-control form-input"
+                    [ngClass]="{'form-submitted': userSubmitted}"
+                    name="password"
+                   >   </div>   
+                <div class="form-group col-6 mt-3"
+                [ngClass]="{'focused': confirmPassword.value || CPassFocused}">
+                    <label for="cpassword" class="form-label">Confirm Password</label>
+                    <input
+                    id="cpassword"
+                    formControlName="confirmPassword"
+                    (focus)="CPassFocused=1"
+                    (blur)="CPassFocused=0"                                               
+                    type="password"
+                    class="form-control form-input"
+                    [ngClass]="{'form-submitted': userSubmitted}"
+                    name="cpassword"
+                   > 
+                </div> 
+                <div class="form-group col-12 mt-3"
+                [ngClass]="{'focused': mobile.value || MobileFocused}">
+                    <label for="mobile" class="form-label">Mobile</label>
+                    <input
+                    id="mobile"
+                    formControlName="mobile"
+                    (focus)="MobileFocused=1"
+                    (blur)="MobileFocused=0"                                               
+                    type="number"
+                    class="form-control form-input"
+                    [ngClass]="{'form-submitted': userSubmitted}"
+                    name="mobile"
+                   >   
+                </div> 
+                <div class="form-group col-12">
+                    <button type="submit" class="btn btn-primary">Save</button>                
+                    <button type="reset" class="btn btn-secondary ml-2">Cancel</button>
+                </div>
+                </div>
+            </form> 
+        </div>
+    </div>
+    </div>
+    
